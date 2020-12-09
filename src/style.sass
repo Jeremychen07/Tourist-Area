@@ -1,0 +1,196 @@
+//主畫面標題
+$top_color: #00478F
+$suptop_color: #3C497C
+// 子畫面
+$title_color: #004D9A
+$suptit_color: #3C497C
+$taghov_color:#FFDA1F
+$bottom_color: #035095
+$color_dark_orange: #EB5E00
+@mixin bsha
+  box-shadow: 0px 0px 12px rgba(0,0,0,0.2)
+*
+  font-weight: 700
+  line-height: 1.58
+  font-family: 'Noto Sans TC', sans-serif, '微軟正黑體'
+  //border: 1px solid black
+  position: relative
+html,body
+  margin: 0
+  padding: 0
+.head
+  position: relative
+  height: 70vh
+  &:after
+    content: ""
+    position: absolute
+    display: block
+    background-image: url('https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+    background-position: center center
+    background-size: cover
+    background-repeat: no-repeat
+    width: 100%
+    height: 100%
+    opacity: 0.5
+    z-index: -1
+  .headtitle
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%,-50%)
+    text-align: center
+    width: 100%
+    max-width: 800px
+    h1
+      font-size: 80px
+      color: $title_color
+      margin: 0
+      font-weight: bold
+    h3
+      margin: 0
+      color: $suptop_color
+
+.container
+  padding: 20px
+  background-color: #f3f3f1
+  display: flex
+  flex-direction: row
+  //height: 500px
+  justify-content: center
+  flex-wrap: wrap 
+  //margin: 0 auto
+  cursor: pointer
+  
+.card
+  border-radius: 5px
+  width: 100%
+  max-width: 400px
+  margin: 20px 30px
+  text-align: center
+  +bsha
+  &:hover
+    .bookbtn
+      bottom: 10px
+    .pic
+      border-radius: 10px 5px 0px 0px
+      transform: scale(1.2)
+    .tag
+      background-color: $taghov_color
+      color: black
+      border-radius: 5px 0px 0px 0px
+.icon
+  border-radius: 5px 5px 0 0
+  width: 100%
+  height: 200px
+  overflow: hidden
+  .pic
+    border-radius: 5px 5px 0 0
+    position: absolute
+    left: 0
+    top: 0
+    border-radius: 5px 5px 0 0
+    width: 100%
+    height: 100%
+    transition: 0.5s
+    background-image: url("/.101.jpg")
+    background-size: cover
+    background-position: center center 
+    +bsha
+  .tag
+    border-radius: 5px 0px 0px 0px
+    left: 0px
+    position: absolute
+    width: 30px
+    text-align: center
+    background-color: $color_dark_orange
+    color: white
+    transition: 0.5s
+    font-weight: 300
+  .bookbtn
+    transition: 0.3s
+    transition-delay: 0.2s
+    width: 42px
+    height: 42px
+    border-radius: 50%
+    position: absolute
+    left: 10px
+    bottom: -50px
+    background-color: #fff
+    color: $color_dark_orange
+    box-shadow: 0px 0px 12px rgba(0,0,0,0.2)
+    +bsha
+    &:hover
+      background-color: $color_dark_orange
+      cursor: pointer
+      color: white
+    i
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%,-50%)
+      font-size: 20px
+.top
+  padding: 15px
+  .title
+    text-decoration: none
+    color: $title_color
+    text-align: left
+    margin-bottom: 10px
+    font-size: 20px
+    text-align: justify
+  .adr
+    //border: solid 1px
+    text-align: left
+    color: $suptit_color
+    font-size: 15px
+    .notic
+      color: red
+      text-align: center
+      display: inline-block
+  .time
+    font-size: 15px
+    text-align: right
+    color: $suptit_color
+    margin-bottom: 10px
+  .text
+    // background-color: $text_color
+    text-align: justify
+    //border-radius: 10px
+    color: black
+    height: 130px
+    transition: 0.5s
+    font-size: 14px
+    font-weight: 400
+  .bluebar
+    border-radius: 0 0 5px 5px 
+    height: 5px
+    width: 100%
+    position: absolute
+    bottom: 0
+    left: 0
+    background-color: $bottom_color
+    +bsha
+@media screen and (max-width:480px)
+  .container 
+    padding: 0px
+  .head .headtitle 
+    h1
+      font-size: 50px
+    h3
+      font-size: 15px
+  .top 
+    .time 
+      font-size: 14px
+    .text
+      height: auto
+@media screen and (min-width:481px) and (max-width:768px)
+  .top 
+    .title
+      font-size: 25px
+    .adr 
+      font-size: 20px
+    .time 
+      font-size: 18px
+    .text 
+      font-size: 16px
+    
