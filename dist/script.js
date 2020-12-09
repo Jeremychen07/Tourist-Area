@@ -27,7 +27,7 @@ return aim.filter(function(item){return item.Start.substr(0,7) == Year})
 function info(data){
   let contain=document.querySelector(".container");
     contain.innerHTML="";//先把畫面清空
-  var picurl="https://i.imgur.com/Yxx3muB.jpg";
+  var picurl="./sea.jpg";
     for(let i=0;i<100;i++)
     {
         let product=data[i];
@@ -37,7 +37,7 @@ function info(data){
           "<div class='icon'><div class='pic' style='background-image: url("+(product.Picture1!=""?product.Picture1:picurl)+")'/style></div>"
           +"<div class='tag'>"+product.Region+"</div>"
           +"<div class='bookbtn'><i class='far fa-bookmark'></i></div></div>"
-          +"<div class='top'><div class='title'>"+product.Name.substr(0,18)+"...</div>"
+          +"<div class='top'><div class='title'>"+(product.Name.substr(18,1)!=""?product.Name.substr(0,18)+"...":product.Name.substr(0,18))+"</div>"
           +"<div class='adr'>"+product.Town+"-"+product.Add+"<div class='notic'>"+product.Cycle+"</div></div>"
           +"<div class='time'>日期:"+product.Start.substr(0,10)+'-'+product.End.substr(0,10)+"</div>"
           +"<div class='text'>說明:<br>"+product.Description.substr(0,100)+"...</div>"
