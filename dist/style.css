@@ -149,7 +149,7 @@ html, body {
   color: #004D9A;
   text-align: left;
   margin-bottom: 10px;
-  font-size: 20px;
+  font-size: 19px;
   text-align: justify;
 }
 .top .adr {
@@ -218,5 +218,6 @@ html, body {
   }
   .top .text {
     font-size: 16px;
+    height: auto;
   }
 }

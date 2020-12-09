@@ -35,7 +35,7 @@ $(function(){
   function DoMethod(data){
       container.innerHTML="";
     var picurl="./sea.jpg"; //picurl預設
-      for(let i=0;i<100;i++)
+      for(let i=0;i<99;i++)
       {
           let info=data[i];
           const card = document.createElement("div");  //創建物件
