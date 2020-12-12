@@ -25,7 +25,7 @@ html,body
     content: ""
     position: absolute
     display: block
-    background-image: url('https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+    background-image: url('https://images.pexels.com/photos/5707597/pexels-photo-5707597.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
     background-position: center center
     background-size: cover
     background-repeat: no-repeat
@@ -46,10 +46,53 @@ html,body
       color: $title_color
       margin: 0
       font-weight: bold
+      position: relative
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        z-index: -1
+        width: 3em
+        height: 3em
+        background-color: white
+        opacity: 0.5
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%) 
+        border-radius: 50%
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        z-index: -1
+        width: 3em
+        height: 3em
+        background-color: #F09605
+        opacity: 0
+        // left: 30%
+        // top: 70%
+        transform: translate(-50%,-50%) 
+        border-radius: 50%
+        animation: example 20s 
     h3
       margin: 0
       color: $suptop_color
-
+@keyframes example
+  0%
+    opacity: 0.2
+    background-color: #F15025
+    top: 70%
+    left: 80%
+  50%
+    opacity: 1
+    top: 50%
+    left: 50%
+  100%
+    background-color: #F09605
+    top: 70%
+    left: 30%
+    opacity: 0
+    
 .container
   padding: 20px
   background-color: #f3f3f1
@@ -67,8 +110,10 @@ html,body
   max-width: 400px
   margin: 20px 30px
   text-align: center
+  transition: 0.5s
   +bsha
   &:hover
+    bottom: 10px
     .bookbtn
       bottom: 10px
     .icon
@@ -127,7 +172,7 @@ html,body
     &:hover
       background-color: $color_dark_orange
       cursor: pointer
-      color: white
+      
     i
       position: absolute
       left: 50%
@@ -172,8 +217,14 @@ html,body
     position: absolute
     bottom: 0
     left: 0
-    background-color: $bottom_color
     +bsha
+.card:nth-child(odd)
+  .bluebar
+    background-color: $bottom_color
+.card:nth-child(even)
+  .bluebar
+    background-color: #a10000
+
 @media screen and (max-width:480px)
   .container 
     padding: 0px
