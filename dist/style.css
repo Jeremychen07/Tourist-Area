@@ -1,9 +1,13 @@
 @charset "UTF-8";
 * {
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.58;
   font-family: "Noto Sans TC", sans-serif, "微軟正黑體";
   position: relative;
+}
+
+:root {
+  --base: #ddfdfd;
 }
 
 html, body {
@@ -14,6 +18,7 @@ html, body {
 .head {
   position: relative;
   height: 70vh;
+  overflow: hidden;
 }
 .head:after {
   content: "";
@@ -41,7 +46,7 @@ html, body {
   font-size: 80px;
   color: #004D9A;
   margin: 0;
-  font-weight: bold;
+  font-weight: 500;
   position: relative;
 }
 .head .headtitle h1:before {
@@ -49,52 +54,32 @@ html, body {
   display: block;
   position: absolute;
   z-index: -1;
-  width: 3em;
-  height: 3em;
+  width: 7em;
+  height: 5em;
   background-color: white;
   opacity: 0.5;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-}
-.head .headtitle h1:after {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 3em;
-  height: 3em;
-  background-color: #F09605;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  animation: example 20s;
+  transform: translate(-50%, -40%);
+  border-radius: 20px;
 }
 .head .headtitle h3 {
   margin: 0;
   color: #3C497C;
 }
-
-@keyframes example {
-  0% {
-    opacity: 0.2;
-    background-color: #F15025;
-    top: 70%;
-    left: 80%;
-  }
-  50% {
-    opacity: 1;
-    top: 50%;
-    left: 50%;
-  }
-  100% {
-    background-color: #F09605;
-    top: 70%;
-    left: 30%;
-    opacity: 0;
-  }
+.head .headtitle input[type=color] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background-color: white;
+  width: 25px;
+  height: 25px;
 }
+.head .headtitle label {
+  color: #3C497C;
+}
+
 .container {
   padding: 20px;
   background-color: #f3f3f1;
@@ -103,10 +88,12 @@ html, body {
   justify-content: center;
   flex-wrap: wrap;
   cursor: pointer;
+  background-color: var(--base);
 }
 
 .card {
   border-radius: 5px;
+  background-color: white;
   width: 100%;
   max-width: 400px;
   margin: 20px 30px;
@@ -117,20 +104,17 @@ html, body {
 .card:hover {
   bottom: 10px;
 }
-.card:hover .bookbtn {
-  bottom: 10px;
-}
 .card:hover .icon {
-  border-radius: 5px 5px 0px 0px;
+  background-color: #fff;
 }
 .card:hover .pic {
-  border-radius: 5px 5px 0px 0px;
   transform: scale(1.2);
 }
 .card:hover .tag {
-  background-color: #FFDA1F;
-  color: black;
-  border-radius: 5px 0px 0px 0px;
+  background-color: red;
+}
+.card:hover .bookbtn {
+  bottom: 10px;
 }
 
 .icon {
@@ -139,9 +123,21 @@ html, body {
   height: 200px;
   overflow: hidden;
   background-color: white;
+  position: relative;
+}
+.icon .tag {
+  border-radius: 5px 0px 0px 0px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  width: 30px;
+  text-align: center;
+  background-color: #EB5E00;
+  color: white;
+  transition: 0.5s;
+  font-weight: 500;
 }
 .icon .pic {
-  border-radius: 5px 5px 0 0;
   position: absolute;
   left: 0;
   top: 0;
@@ -154,20 +150,8 @@ html, body {
   background-position: center center;
   box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
 }
-.icon .tag {
-  border-radius: 5px 0px 0px 0px;
-  left: 0px;
-  position: absolute;
-  width: 30px;
-  text-align: center;
-  background-color: #EB5E00;
-  color: white;
-  transition: 0.5s;
-  font-weight: 300;
-}
 .icon .bookbtn {
-  transition: 0.3s;
-  transition-delay: 0.2s;
+  transition: 0.5s;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -182,6 +166,9 @@ html, body {
 .icon .bookbtn:hover {
   background-color: #EB5E00;
   cursor: pointer;
+}
+.icon .bookbtn:hover i {
+  color: white;
 }
 .icon .bookbtn i {
   position: absolute;
@@ -224,9 +211,10 @@ html, body {
   height: 130px;
   transition: 0.5s;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
 }
-.top .bluebar {
+
+.bluebar {
   border-radius: 0 0 5px 5px;
   height: 5px;
   width: 100%;
@@ -274,7 +262,6 @@ html, body {
     font-size: 18px;
   }
   .top .text {
-    font-size: 16px;
     height: auto;
   }
 }

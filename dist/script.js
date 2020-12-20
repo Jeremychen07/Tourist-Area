@@ -1,56 +1,75 @@
 $(function(){
-  var today=new Date();
-  const yearmoth=today.getFullYear()+"-"+(today.getMonth()+1); //當年當月變數
-  document.querySelector('h3').innerHTML=yearmoth+"月活動，資料來源:政府開放平台";
-  let container=document.querySelector(".container");
+  const today=new Date();
+  const yearmoth=today.getFullYear(); //當年變數  +"-"+(today.getMonth()+1)
+  const container=document.querySelector(".container"); //內容
   const cors = "https://cors-anywhere.herokuapp.com/"; //cors解決方法
   const endpoint = "https://gis.taiwan.net.tw/XMLReleaseALL_public/activity_C_f.json"; //政府JSON資料
-  
+
+  document.querySelector('h3').innerHTML="<span style='color:red'>"+yearmoth+"</style></span> 年活動，資料來源:政府開放平台";  //首頁標題名稱
+
+  //使用者背景顏色變更
+  const inputs=document.querySelector("#base");
+  function changeHandler(){
+    document.querySelector(":root").style.setProperty("--"+this.name,this.value);
+  }
+  inputs.addEventListener("change",changeHandler);
+
+  //下拉是選單
+  let choose=document.querySelector("#choose");
+  let citySelect=document.querySelector("#city");
+  let taiwan=["臺北市","新北市","桃園市","臺中市","臺南市","高雄市","新竹縣","苗栗縣","彰化縣","南投縣","雲林縣","嘉義縣","屏東縣","宜蘭縣","花蓮縣","臺東縣","澎湖縣","金門縣","連江縣"];
+  let selecttext="";
+  for(var i=0;i<taiwan.length;i++){
+    selecttext+=`<option value=${taiwan[i]}>${taiwan[i]}</option>`;
+  }
+  citySelect.innerHTML=selecttext;
+
+  // ajax請求
   $.ajax({
     type: "GET",
     url: cors+endpoint,
     dataType: "json",
     success:function(res){
-      //console.log(res);
-      //大到小開始日期排序
-      tododata = (res.XML_Head.Infos.Info).sort(function (a, b) {
-      return a.Start < b.Start ? 1 : -1;
-      }); 
-
-      tododata=(filterByData(tododata,yearmoth)); //篩選日期為當月
-      //console.log(tododata);
-      //var data=(res);
-      DoMethod(tododata);
+      container.innerHTML="載入完成，請輸入您的地區。";
+      choose.addEventListener("click",clickHandler);
+      function clickHandler(){
+        let datacity=citySelect.value;
+        let data=(res.XML_Head.Infos.Info).sort(function (a, b) {
+          return a.Start < b.Start ? 1 : b.Start <  a.Start ? -1 : 0;
+          }); 
+        data=data.filter(item=>item.Start.substr(0,4) == yearmoth && item.Region==datacity);
+        doMethod(data);
+      }
     },
     error: function (thrownError) {
-      container.innerHTML=(thrownError.responseText);
+      container.innerHTML="載入失敗請稍後再試<br>"+thrownError.responseText;
       }
   });
 
-  //篩選日期函式
-  function filterByData(aim, Year) {
-  return aim.filter(function(item){return item.Start.substr(0,7) == Year})
-  }
   //處理資料函式
-  function DoMethod(data){
-      container.innerHTML="";
-    var picurl="./sea.jpg"; //picurl預設
-      for(let i=0;i<99;i++)
+  function doMethod(data){
+    container.innerHTML="";
+    const picurl="./sea.jpg"; //picurl預設
+      for(let i=0;i<data.length;i++)
       {
           let info=data[i];
-          const card = document.createElement("div");  //創建物件
+          console.table(info.Start);
+          let card = document.createElement("div");  //創建物件
           card.className="card"; // 加入class
           card.innerHTML+=
-            "<div class='icon'><div class='pic' style='background-image: url("+(info.Picture1!=""?info.Picture1:picurl)+")'/style></div>"
-            +"<div class='tag'>"+info.Region+"</div>"
-            +"<div class='bookbtn'><i class='far fa-bookmark'></i></div></div>"
-            +"<div class='top'><div class='title'>"+(info.Name.substr(18,1)!=""?info.Name.substr(0,18)+"...":info.Name.substr(0,18))+"</div>"
-            +"<div class='adr'>"+info.Town+"-"+info.Add+"<div class='notic'>"+info.Cycle+"</div></div>"
-            +"<div class='time'>日期:"+info.Start.substr(0,10)+'-'+info.End.substr(0,10)+"</div>"
-            +"<div class='text'>說明:<br>"+info.Description.substr(0,100)+"...</div>"
-            +"<div class='bluebar'></div></div>"
-            ;
+          `
+          <div class='icon'><div class='pic' style='background-image: url(${info.Picture1!=""?info.Picture1:picurl})'/style></div>
+          <div class='tag'>${info.Region}</div>
+          <div class='bookbtn'><i class='far fa-bookmark'></i></div></div>
+          <div class='top'><div class='title'>${info.Name}</div>
+          <div class='adr'>${info.Town}-${info.Add}<div class='notic'>${info.Cycle}</div></div>
+          <div class='time'>日期:${info.Start.substr(0,10)}-${info.End.substr(0,10)}</div>
+          <div class='text'>說明:<br>${info.Description.substr(0,100)}...</div>
+          </div>
+          <div class='bluebar'></div>
+          `;
           container.appendChild(card);
+
   }}
     
 });

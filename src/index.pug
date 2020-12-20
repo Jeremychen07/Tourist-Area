@@ -4,7 +4,7 @@ html(lang='en')
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     title Tourist Area
-    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400&display=swap')
+    link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap')
     link(rel='stylesheet' href='https://pro.fontawesome.com/releases/v5.10.0/css/all.css')
     link(rel='stylesheet' href='./style.css')
   body
@@ -12,7 +12,14 @@ html(lang='en')
     .head
       .headtitle
         h1 台灣觀光資訊
-        h3(onload='Showtitle(this)') 2020-12月活動，資料來源:政府開放平台
+        h3
+        label(for='base') 請選擇背景顏色:
+        input#base(type='color' name='base' value='#ddfdfd')
+        <br>
+        label 請選擇地區:
+        select#city
+          //- option(value='tpi') tpi
+        input#choose(type='button' value='確認')
     .container
       p 載入中，請稍等一下
       //- .card
@@ -27,7 +34,7 @@ html(lang='en')
       //-       .notic 2020年暫停辦理"
       //-     .time 日期:2020-12-07-2020-12-07
       //-     .text 詳細資訊:<br>宜蘭國際童玩藝術節有著與眾不同的主題-「童玩」，童玩節是宜蘭想要提供給兒童們一個可以與父母同樂...
-      //-     .bluebar 
+      //-   .bluebar 
     // partial
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js')
     script(src='./script.js')

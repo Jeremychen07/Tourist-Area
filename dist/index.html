@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tourist Area</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&amp;display=swap">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <link rel="stylesheet" href="./style.css">
   </head>
@@ -13,7 +13,12 @@
     <div class="head">
       <div class="headtitle">
         <h1>台灣觀光資訊</h1>
-        <h3 onload="Showtitle(this)">2020-12月活動，資料來源:政府開放平台</h3>
+        <h3></h3>
+        <label for="base">請選擇背景顏色:</label>
+        <input id="base" type="color" name="base" value="#ddfdfd"><br>
+        <label>請選擇地區:</label>
+        <select id="city"></select>
+        <input id="choose" type="button" value="確認">
       </div>
     </div>
     <div class="container">
