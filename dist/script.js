@@ -3,8 +3,8 @@ $(function(){
   const yearmoth=today.getFullYear(); //當年變數  +"-"+(today.getMonth()+1)
   const container=document.querySelector(".container"); //內容
   const cors = "https://cors-anywhere.herokuapp.com/"; //cors解決方法
-  const endpoint ="https://gis.taiwan.net.tw/XMLReleaseALL_public/activity_C_f.json"; //政府JSON資料
-  //const endpoint = "https://jeremychen07.github.io/Tourist-Area/opendata.json" //github
+  //const endpoint ="https://gis.taiwan.net.tw/XMLReleaseALL_public/activity_C_f.json"; //政府JSON資料
+  const endpoint = "https://jeremychen07.github.io/Tourist-Area/opendata.json" //github
 
   document.querySelector('h3').innerHTML="<span style='color:red'>"+yearmoth+"</style></span> 年活動，資料來源:政府開放平台";  //首頁標題名稱
 
@@ -28,7 +28,7 @@ $(function(){
   // ajax請求
   $.ajax({
     type: "GET",
-    url: cors+endpoint, // cors解決
+    url: endpoint, // cors解決  cors+
     dataType: "json",
     success:function(res){
       container.innerHTML="載入完成，請輸入您的地區。";
