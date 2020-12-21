@@ -60,7 +60,7 @@ html, body {
   opacity: 0.5;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -40%);
+  transform: translate(-50%, -35%);
   border-radius: 20px;
 }
 .head .headtitle h3 {

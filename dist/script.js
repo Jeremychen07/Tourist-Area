@@ -54,7 +54,6 @@ $(function(){
       for(let i=0;i<data.length;i++)
       {
           let info=data[i];
-          console.table(info.Start);
           let card = document.createElement("div");  //創建物件
           card.className="card"; // 加入class
           card.innerHTML+=
