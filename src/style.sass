@@ -45,25 +45,25 @@ html,body
     text-align: center
     width: 100%
     max-width: 800px
+    &:before
+        content: ''
+        display: block
+        position: absolute
+        z-index: -1
+        width: 40em
+        height: 25em
+        background-color: white
+        opacity: 0.5
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        border-radius: 20px
     h1
       font-size: 80px
       color: $title_color
       margin: 0
       font-weight: 500
       position: relative
-      &:before
-        content: ''
-        display: block
-        position: absolute
-        z-index: -1
-        width: 7em
-        height: 5em
-        background-color: white
-        opacity: 0.5
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -35%)
-        border-radius: 20px
     h3
       margin: 0
       color: $suptop_color
@@ -75,6 +75,8 @@ html,body
       height: 25px
     label
       color: $suptop_color
+    input
+      margin: 2px 0
       
 .container
   padding: 20px

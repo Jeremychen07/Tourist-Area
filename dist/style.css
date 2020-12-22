@@ -42,26 +42,26 @@ html, body {
   width: 100%;
   max-width: 800px;
 }
+.head .headtitle:before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 40em;
+  height: 25em;
+  background-color: white;
+  opacity: 0.5;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
 .head .headtitle h1 {
   font-size: 80px;
   color: #004D9A;
   margin: 0;
   font-weight: 500;
   position: relative;
-}
-.head .headtitle h1:before {
-  content: "";
-  display: block;
-  position: absolute;
-  z-index: -1;
-  width: 7em;
-  height: 5em;
-  background-color: white;
-  opacity: 0.5;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -35%);
-  border-radius: 20px;
 }
 .head .headtitle h3 {
   margin: 0;
@@ -78,6 +78,9 @@ html, body {
 }
 .head .headtitle label {
   color: #3C497C;
+}
+.head .headtitle input {
+  margin: 2px 0;
 }
 
 .container {
