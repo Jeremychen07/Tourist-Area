@@ -1,12 +1,12 @@
 $(function(){
   const today=new Date();
-  const yearmoth=today.getFullYear(); //當年變數  +"-"+(today.getMonth()+1)
+  //const yearmoth=today.getFullYear(); //當年變數  +"-"+(today.getMonth()+1)
   const container=document.querySelector(".container"); //內容
   //const cors = "https://cors-anywhere.herokuapp.com/"; //cors解決方法
   //const endpoint ="https://gis.taiwan.net.tw/XMLReleaseALL_public/activity_C_f.json"; //政府JSON資料
   const endpoint = "https://jeremychen07.github.io/Tourist-Area/opendata.json" //github
 
-  document.querySelector('h3').innerHTML="<span style='color:red'>"+yearmoth+"</style></span> 年活動，資料來源:政府開放平台";  //首頁標題名稱
+  document.querySelector('h3').innerHTML="<span style='color:red'>資料來源:政府開放平台</span>";  //首頁標題名稱 "+yearmoth+"</style> 年活動，
   const bigindata=document.querySelector("#bigindate"); //開始日期
   const enddate=document.querySelector("#enddate"); //結束日期
 
