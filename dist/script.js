@@ -77,7 +77,7 @@ $(function(){
           <div class='time'><i class="fas fa-bell"> 
             <small style="color: #EB5E00"> ${info.Start.substr(0,10)}</small> - <small style="color: #EB5E00">${info.End.substr(0,10)} </small>
           </i></div>
-          <div class='text'>說明:<br>${info.Description.substr(0,100)}...</div>
+          <div class='text'>說明:<br>${info.Description}...</div>
           </div>
           <div class='bluebar'></div>
           `;

@@ -96,9 +96,10 @@ html,body
   margin: 20px 30px
   text-align: center
   transition: 0.5s
+  transform: translateY(0px)
   +bsha
   &:hover
-    bottom: 10px
+    transform: translateY(-20px)
     .icon
       background-color: #fff
     .pic
@@ -195,6 +196,18 @@ html,body
     transition: 0.5s
     font-size: 14px
     font-weight: 300
+    overflow-y: scroll
+    padding: 0 10px
+    // &::-webkit-scrollbar-track
+    // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+    // background-color: #ffc0cb
+
+    &::-webkit-scrollbar
+      width: 7px
+      background-color: #dbe5ff
+
+    &::-webkit-scrollbar-thumb
+      background-color: #353536
 .bluebar
   border-radius: 0 0 5px 5px 
   height: 5px
@@ -221,8 +234,6 @@ html,body
   .top 
     .time 
       font-size: 14px
-    .text
-      height: auto
 @media screen and (min-width:481px) and (max-width:768px)
   .top 
     .title
@@ -231,6 +242,5 @@ html,body
       font-size: 20px
     .time 
       font-size: 18px
-    .text 
-      height: auto
+    
     
