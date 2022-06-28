@@ -7,7 +7,7 @@
 }
 
 :root {
-  --base: #ddfdfd;
+  --chooseBackgroud: #ddfdfd;
 }
 
 html, body {
@@ -91,7 +91,7 @@ html, body {
   justify-content: center;
   flex-wrap: wrap;
   cursor: pointer;
-  background-color: var(--base);
+  background-color: var(--chooseBackgroud);
 }
 
 .card {
