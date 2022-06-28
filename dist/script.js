@@ -116,7 +116,9 @@ $(function(){
         </div>
         <div class='bluebar'></div>
         `;
-        container.appendChild(card);
+        setTimeout(() => {
+          container.appendChild(card);
+        }, 100);            
     }
   }  
   mainFn();
