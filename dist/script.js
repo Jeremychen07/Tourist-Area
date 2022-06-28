@@ -29,12 +29,12 @@ $(function(){
   }
   function setDate(){
     const today = new Date();
-    bigindata.value = today.getFullYear() + '-' + (String(today.getMonth()-3).padStart(2, '0')) + "-" + '01' ;
-    enddate.value = today.getFullYear() + '-' + (String(today.getMonth()).padStart(2, '0')) + "-" + (String(today.getDate()).padStart(2, '0')) ;
+    bigindata.value = today.getFullYear() + '-01-01';
+    enddate.value = today.getFullYear() + '-12-31';
   }
 
   function setArea(){
-    let taiwan = ["全部" , "臺北市","新北市","桃園市","臺中市","臺南市","高雄市","新竹縣","苗栗縣","彰化縣","南投縣","雲林縣","嘉義縣","屏東縣","宜蘭縣","花蓮縣","臺東縣","澎湖縣","金門縣","連江縣"];
+    let taiwan = ["臺北市","新北市","桃園市","臺中市","臺南市","高雄市","新竹縣","苗栗縣","彰化縣","南投縣","雲林縣","嘉義縣","屏東縣","宜蘭縣","花蓮縣","臺東縣","澎湖縣","金門縣","連江縣"];
     let selecttext = "";
     for(var i = 0; i < taiwan.length; i++){
       selecttext += `<option value = ${taiwan[i]}>${taiwan[i]}</option>`;
@@ -57,16 +57,9 @@ $(function(){
             });      
           data = data.filter(item =>{
               return  Date.parse(bigindata.value).valueOf() <= Date.parse(item.Start).valueOf() //比對日期
-                      && Date.parse(enddate.value).valueOf() >= Date.parse(item.End).valueOf();      
-            }
-          );
-          if(datacity != "全部")
-          {
-            data = data.filter(item => {
-                return item.Region == datacity;
-              }
-            );
-          }
+                      && Date.parse(enddate.value).valueOf() >= Date.parse(item.End).valueOf()
+                      &&  item.Region == datacity;      
+            });     
           dealConatiner(data);
         });        
       },
@@ -115,10 +108,8 @@ $(function(){
           </div>
         </div>
         <div class='bluebar'></div>
-        `;
-        setTimeout(() => {
-          container.appendChild(card);
-        }, 100);            
+        `;        
+        container.appendChild(card);
     }
   }  
   mainFn();
