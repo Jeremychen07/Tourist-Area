@@ -29,8 +29,8 @@ $(function(){
   }
   function setDate(){
     const today = new Date();
-    bigindata.value = today.getFullYear() + '-01-01';
-    enddate.value = today.getFullYear() + '-12-31';
+    bigindata.value = today.getFullYear() + '-' + (String(today.getMonth()-3).padStart(2, '0')) + "-" + '01' ;
+    enddate.value = today.getFullYear() + '-' + (String(today.getMonth()).padStart(2, '0')) + "-" + (String(today.getDate()).padStart(2, '0')) ;
   }
 
   function setArea(){
